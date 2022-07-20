@@ -7,14 +7,8 @@ export default function Dashboard() {
 
   useEffect(() => {
     let authToken = sessionStorage.getItem('Auth Token')
-
-    if (authToken) {
-        navigate('/dashboard')
-    }
-
-    if (!authToken) {
-        navigate('/auth')
-    }
+    if (authToken) navigate('/dashboard')
+    if (!authToken) navigate('/auth')
   }, [])
 
   return (

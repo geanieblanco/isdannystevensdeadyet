@@ -23,7 +23,7 @@ export default function SignIn(){
             if (error.code === 'auth/email-already-in-use') {
                 alert('Email Already in Use');
             }
-            })
+        })
     }
 
     return (

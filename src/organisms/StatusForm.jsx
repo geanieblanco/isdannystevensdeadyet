@@ -13,7 +13,7 @@ export default function StatusForm(){
     const archiveCaption = () => {
         const archiveRef = collection(db, "archive")
         return addDoc(archiveRef, {
-                'created': Date.now(),
+                'created': serverTimestamp,
                 'caption': caption,
                 'episode': episodeNumber
             });
@@ -22,7 +22,7 @@ export default function StatusForm(){
     const setNewDisplayContent = () => {
         const displayRef = collection(db, "display")
         return addDoc(displayRef, {
-                'created': Date.now(),
+                'created': serverTimestamp,
                 'caption': caption,
                 'status': status,
                 'episode': episodeNumber

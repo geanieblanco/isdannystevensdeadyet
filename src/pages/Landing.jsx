@@ -19,15 +19,13 @@ export default function Landing() {
   }
 
   const displayAnswer = () => {
-    if (status === 'dead') {
-      return (
-        <h1>Yes :)</h1>
-      )
-    } else {
-      return (
-        <h1>No :(</h1>
-      )
-    }
+    if (status === 'dead') return(<h1>Yes :)</h1>);
+    if (status === 'alive') return (<h1>No :(</h1>);
+    return (<h1>Maybe :|</h1>)
+  }
+
+  function sortRecentEpisode(a,b){
+    return a.episode < b.episode ? 1 : -1;
   }
 
   useEffect(() => {
@@ -36,9 +34,10 @@ export default function Landing() {
         let content = [];
         allDocs.forEach((doc) => {
           content.push(doc.data());
+          content = content.sort(sortRecentEpisode);
         });
 
-        const currentContent = content.reverse(content.episode)[0];
+        const currentContent = content[0];
         setCurrentContent(currentContent)
       })
   }, [])
